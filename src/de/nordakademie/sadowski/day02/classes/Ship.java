@@ -22,15 +22,21 @@ public class Ship {
 			int schrittAnzahl = Integer.parseInt(movement.substring(movement.length() - 1));
 			String[] moveDirection = movement.split(" ");
 			switch (moveDirection[0]) {
-				case "forward" -> moveForward(schrittAnzahl);
-				case "up" -> moveUp(schrittAnzahl);
-				case "down" -> moveDown(schrittAnzahl);
+                case "forward":
+                    moveForward(schrittAnzahl);
+                    break;
+                case "up":
+                    moveUp(schrittAnzahl);
+                    break;
+                case "down":
+                    moveDown(schrittAnzahl);
+                    break;
 			}
 		}
     }
-    
+
     public void readData(){
-		try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\input\\input.txt"))){
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\de\\nordakademie\\sadowski\\day02\\input\\input.txt"))){
 	        String line;
 	        while((line = bufferedReader.readLine())!= null) {
 	            Movements.add(line);
