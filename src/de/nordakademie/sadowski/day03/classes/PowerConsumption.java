@@ -25,6 +25,10 @@ public class PowerConsumption {
         return epsilonRate;
     }
 
+    public ArrayList<String> getTemp() {
+        return temp;
+    }
+
     public void readData(){
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("src\\de\\nordakademie\\sadowski\\day03\\input\\input.txt"))){
             String line;
@@ -35,10 +39,6 @@ public class PowerConsumption {
             e.printStackTrace();
             System.out.println("Datei nicht gefunden.");
         }
-    }
-
-    public ArrayList<String> getTemp() {
-        return temp;
     }
 
     public void calculatePowerConsumption(){
