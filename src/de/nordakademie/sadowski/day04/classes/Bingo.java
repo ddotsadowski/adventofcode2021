@@ -4,6 +4,7 @@ package de.nordakademie.sadowski.day04.classes;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class Bingo {
@@ -15,6 +16,8 @@ public class Bingo {
     private List<String> eingabeArray = new ArrayList<>();
 
     private List<BingoBoard> boardList = new ArrayList<>();
+
+    private List<BingoBoard> winList = new ArrayList<>();
 
     private int boardSize = 5;
 
@@ -53,10 +56,21 @@ public class Bingo {
     public void runBingo(){
         for (String line : eingabeArray) {
             int lineValue = Integer.parseInt(line);
-            for (BingoBoard bingoBoard: boardList) {
+
+            Iterator<BingoBoard> iteratorBingoBoard = boardList.iterator();
+
+            while(iteratorBingoBoard.hasNext()){
+                BingoBoard bingoBoard = iteratorBingoBoard.next();
                 bingoBoard.checkNumber(lineValue);
                 if(bingoBoard.checkWin()){
-                    System.out.println("Tag 4 (1) - Siegerreihe: " + lineValue*bingoBoard.countPoints());
+                    winList.add(bingoBoard);
+                    if(winList.size() == 1){
+                        System.out.println("Tag 4 (1) - Sieger-Board: " + lineValue*bingoBoard.countPoints());
+                    }
+                    if(!iteratorBingoBoard.hasNext()){
+                        System.out.println("Tag 4 (2) - Verlierer-Board: " + lineValue*bingoBoard.countPoints());
+                    }
+                    iteratorBingoBoard.remove();
                 }
             }
         }

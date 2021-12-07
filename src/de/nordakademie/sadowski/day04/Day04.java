@@ -7,7 +7,9 @@ import java.io.FileNotFoundException;
 public class Day04 {
 
     public static void run() {
+
         Bingo bingo = new Bingo();
         bingo.runBingo();
+
     }
 }
